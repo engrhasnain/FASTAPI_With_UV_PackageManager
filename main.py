@@ -77,3 +77,22 @@ async def create_book(book_date : BookCreate):
         "Title" : f"{book_date.title}",
         "Author" : f"{book_date.author}"
     }
+
+
+# here comes the concept of headers and status code, how and why header
+from fastapi import Header
+
+@app.get("/get_header", status_code=200)
+async def get_header(
+    accept : str = Header(None),
+    content_type : str = Header(None),
+    user_agent : str = Header(None),
+    host : str = Header(None)
+):
+    request_header = {}
+    request_header["Accept"] = accept
+    request_header["Content-Type"] = content_type
+    request_header["User-Agent"] = user_agent
+    request_header["Host"] = host
+
+    return request_header
