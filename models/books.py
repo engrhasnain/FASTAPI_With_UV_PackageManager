@@ -14,6 +14,13 @@ class BookCreated(BaseModel):
     published_year : int
     in_stock : bool
 
+class BookUpdate(BaseModel):
+    title: str
+    author : str
+    price: int
+    pages : int
+    in_stock : bool
+
 class BookResponse(BaseModel):
     id: int
     title : str
